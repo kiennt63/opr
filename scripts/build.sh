@@ -1,2 +1,2 @@
-cmake -S . -Bbuild -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake -S . -Bbuild -GNinja
 ninja -C build -j 8
