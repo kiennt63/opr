@@ -1,0 +1,9 @@
+fail_fast: false
+repos:
+  - repo: https://github.com/pocc/pre-commit-hooks
+    rev: v1.3.5
+    hooks:
+      - id: clang-format
+        exclude_types: [javascript, json, java, objective-c, proto, c#]
+        entry: clang-format -i
+        args: [--style=file]
