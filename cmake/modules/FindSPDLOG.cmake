@@ -20,7 +20,6 @@ if (SPDLOG_FOUND)
         ${SPDLOG_PATH}/lib
     )
     list(APPEND SPDLOG_LIBRARIES
-        spdlog
     )
 else (SPDLOG_FOUND)
     message(FATAL_ERROR "=====\nspdlog not found! Please check libraries first.\n")

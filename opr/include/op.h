@@ -10,13 +10,15 @@ namespace opr {
 class op
 {
 public:
+    op();
+    ~op();
     buffer input;
     buffer output;
     status exec();
 
 private:
-    op* next_;
-    op* prev_;
+    op* next_ = nullptr;
+    op* prev_ = nullptr;
 };
 
 }  // namespace opr
