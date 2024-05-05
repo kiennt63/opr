@@ -53,3 +53,4 @@ include (${CMAKE_SOURCE_DIR}/cmake/dependencies.cmake)
 
 # into the project
 add_subdirectory(opr)
+add_subdirectory(examples)

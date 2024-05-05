@@ -9,9 +9,3 @@ target_include_directories(opr SYSTEM PUBLIC
 target_include_directories(opr  PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-
-# target_link_libraries(opr PUBLIC
-#     spdlog
-# )
-
-add_subdirectory(examples)
