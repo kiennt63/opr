@@ -1,26 +1,16 @@
-/* Insert copyright */
-#ifndef OPR_OP_H_
-#define OPR_OP_H_
+#pragma once
 
-#include "buffer.h"
 #include "defines.h"
+
+#include <iostream>
 
 namespace opr {
 
+template <typename t>
 class op
 {
 public:
-    op();
-    ~op();
-    buffer input;
-    buffer output;
-    status exec();
-
-private:
-    op* next_ = nullptr;
-    op* prev_ = nullptr;
+    status exec() { return static_cast<t*>(this)->exec(); }
 };
 
 }  // namespace opr
-
-#endif  // OPR_OP_H_
