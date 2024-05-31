@@ -35,7 +35,7 @@ private:
 #define check_inf(value, ...)         \
     do                                \
     {                                 \
-        if (!value)                   \
+        if (!(value))                 \
         {                             \
             SPDLOG_INFO(__VA_ARGS__); \
         }                             \
@@ -44,7 +44,7 @@ private:
 #define check_wrn(value, ...)         \
     do                                \
     {                                 \
-        if (!value)                   \
+        if (!(value))                 \
         {                             \
             SPDLOG_WARN(__VA_ARGS__); \
         }                             \
@@ -53,7 +53,7 @@ private:
 #define check_err(value, ...)          \
     do                                 \
     {                                  \
-        if (!value)                    \
+        if (!(value))                  \
         {                              \
             SPDLOG_ERROR(__VA_ARGS__); \
             exit(EXIT_FAILURE);        \
