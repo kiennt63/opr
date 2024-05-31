@@ -14,7 +14,7 @@ status graph::add_node(node_ptr node)
 
 status graph::add_dep(int from, int to)
 {
-    nodes_[from]->dependencies.push_back(nodes_[to]);
+    nodes_[to]->dependencies.push_back(nodes_[from]);
     nodes_[to]->inputs.push_back(nodes_[from]->output);
     return status::ok;
 }
