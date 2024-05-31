@@ -3,7 +3,15 @@
 
 namespace opr {
 
-add_node::add_node(int id) : node(id) {}
+add_node::add_node(int id) : node(id)
+{
+    output = new int;
+}
+
+add_node::~add_node()
+{
+    delete output;
+}
 
 status add_node::exec()
 {

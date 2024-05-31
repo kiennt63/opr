@@ -15,6 +15,7 @@ class node
 {
 public:
     node(int id) : id(id), visited(false) {}
+    virtual ~node() {}
     int id;
     std::vector<int*> inputs;
     int* output;
