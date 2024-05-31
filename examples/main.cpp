@@ -1,7 +1,6 @@
 #include "add_node.h"
 #include "backends/cpu/op_factory_cpu.h"
 #include "const_node.h"
-#include "dag.h"
 #include "graph.h"
 #include "logger.h"
 

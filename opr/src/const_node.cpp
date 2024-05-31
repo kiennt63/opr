@@ -1,5 +1,4 @@
 #include "const_node.h"
-#include "logger.h"
 
 namespace opr {
 
