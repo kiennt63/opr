@@ -1,6 +1,4 @@
-/* Insert copyright */
-#ifndef OPR_DEFINES_H_
-#define OPR_DEFINES_H_
+#pragma once
 
 namespace opr {
 
@@ -11,5 +9,3 @@ enum status
 };
 
 }  // namespace opr
-
-#endif  // OPR_DEFINES_H_

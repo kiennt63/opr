@@ -1,6 +1,4 @@
-/* Insert copyright */
-#ifndef OPR_LOGGER_H_
-#define OPR_LOGGER_H_
+#pragma once
 
 #include <cstdlib>
 #include <memory>
@@ -59,5 +57,3 @@ private:
             exit(EXIT_FAILURE);        \
         }                              \
     } while (false)
-
-#endif  // OPR_LOGGER_H_

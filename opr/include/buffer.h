@@ -1,6 +1,4 @@
-/* Insert copyright */
-#ifndef OPR_BUFFER_H_
-#define OPR_BUFFER_H_
+#pragma once
 
 #include <variant>
 
@@ -28,5 +26,3 @@ struct cuda_memory
 using buffer = std::variant<cpu_memory, cuda_memory>;
 
 }  // namespace opr
-
-#endif  // OPR_BUFFER_H_
