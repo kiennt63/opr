@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "defines.h"
+#include "tensor.h"
 
 namespace opr {
 
@@ -17,8 +18,8 @@ public:
     node(int id) : id(id), visited(false) {}
     virtual ~node() {}
     int id;
-    std::vector<int*> inputs;
-    int* output;
+    tensor* input;
+    tensor* output;
     bool visited;
     std::vector<node_ptr> dependencies;
 

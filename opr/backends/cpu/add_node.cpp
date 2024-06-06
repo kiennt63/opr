@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "add_node.h"
 #include "logger.h"
 
@@ -15,7 +17,8 @@ add_node::~add_node()
 
 status add_node::exec()
 {
-    check_err(input.size() == 2, "[add_node]: inputs size must be 2");
+    auto& t = std::get<cpu_buffer>(*input);
+    check_err(t.size_bytes() == 2, "[add_node]: inputs size must be 2");
     *output = *input[0] + *input[1];
     return status::ok;
 }
