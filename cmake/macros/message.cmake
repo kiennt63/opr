@@ -53,25 +53,20 @@ macro(print_cmake_modules var string)
 endmacro()
 
 #### message
-macro(print_var string)
-    message(${Yellow} "   " ${string} ${ColourReset})
-endmacro()
-
-#### message
 macro(print_option option)
     if (${option})
-         message(${Yellow} "   " "[${option}]" " = ${BoldRed} ON" ${ColourReset})
+         message(${Yellow} "   " "[${option}]" " = ${BoldGreen} ON" ${ColourReset})
     else(${option})
-         message(${Yellow} "   " "[${option}]" " = ${BoldBlue} OFF" ${ColourReset})
+        message(${Yellow} "   " "[${option}]" " = ${BoldRed} OFF" ${ColourReset})
     endif(${option})
 endmacro()
 
 #### message
 macro(print_build_type string option)
     if (${option} STREQUAL "Release")
-         message(${Yellow} "   " ${string} " = ${BoldRed} Release" ${ColourReset})
+        message(${Yellow} "   " ${string} " =${BoldGreen} RELEASE" ${ColourReset})
     else ()
-         message(${Yellow} "   " ${string} " = ${BoldBlue} Debug" ${ColourReset})
+        message(${Yellow} "   " ${string} " =${BoldBlue} DEBUG" ${ColourReset})
     endif()
 endmacro()
 
@@ -85,14 +80,4 @@ macro(print_lib string)
         print_dir("[${string}_LIBRARIES]" "${${string}_LIBRARIES}")
         message(" ")
     endif()
-endmacro()
-
-#### message
-macro(print_libraries string include_dir include_lib lib)
-    message(${BoldBlue} "   " ${string} " : "  ${ColourReset})
-    message(${BoldBlue} "   " "--------------------------------------"  ${ColourReset})
-    print_dir("[_${string}_INCLUDE_DIR_]" "${include_dir}")
-    print_dir("[_${string}_LIBRARY_DIR_]" "${include_lib}")
-    print_dir("[_${string}_LIBRARIES_]" "${lib}")
-    message(" ")
 endmacro()

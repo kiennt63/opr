@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 3.5)
 
 project(opr)
 
+# some macros
+include("${CMAKE_SOURCE_DIR}/cmake/macros/message.cmake")
+include("${CMAKE_SOURCE_DIR}/cmake/macros/options.cmake")
+include("${CMAKE_SOURCE_DIR}/cmake/macros/vendors.cmake")
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
@@ -34,6 +39,8 @@ else ()
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_DEBUG -g -O0")
 endif()
 
+print_build_type("[BUILD TYPE]" CMAKE_BUILD_TYPE)
+
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${BUILD_TYPE_STR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${BUILD_TYPE_STR}/bin)
 
@@ -41,10 +48,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${BUILD_TYPE_STR}/bin)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -std=c++17 -Werror -Wall -Wextra -Wno-packed-bitfield-compat -fdiagnostics-color=always")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DEIGEN_MPL2_ONLY -fPIC -Werror -Wall -Wextra -Wno-packed-bitfield-compat")
 
-
-# some macros
-include("${CMAKE_SOURCE_DIR}/cmake/macros/message.cmake")
-include("${CMAKE_SOURCE_DIR}/cmake/macros/vendors.cmake")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/modules")
 
