@@ -5,19 +5,19 @@
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
 #include "spdlog/spdlog.h"
 
-namespace common {
+namespace opr {
 
-class Logger
+class logger
 {
 public:
-    static void Init();
-    inline static std::shared_ptr<spdlog::logger> GetLogger() { return logger_; }
+    static void init();
+    inline static std::shared_ptr<spdlog::logger> get_logger() { return logger_; }
 
 private:
     static std::shared_ptr<spdlog::logger> logger_;
 };
 
-}  // namespace common
+}  // namespace opr
 
 #define log_inf(...) SPDLOG_INFO(__VA_ARGS__)
 #define log_dbg(...) SPDLOG_DEBUG(__VA_ARGS__)
