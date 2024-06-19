@@ -18,8 +18,8 @@ public:
     node(int id) : id(id), visited(false) {}
     virtual ~node() {}
     int id;
-    tensor* input;
-    tensor* output;
+    std::vector<std::shared_ptr<tensor>> input;
+    std::shared_ptr<tensor> output;
     bool visited;
     std::vector<node_ptr> dependencies;
 

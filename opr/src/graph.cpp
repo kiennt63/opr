@@ -48,7 +48,6 @@ status graph::topo_sort()
     {
         node_ptr node = nodes_[id];
         node->exec();
-        log_inf("value: {}", *(node->output));
     }
 
     return status::ok;
