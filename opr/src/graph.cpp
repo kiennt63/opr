@@ -2,6 +2,8 @@
 
 namespace opr {
 
+graph::graph(int id, const tensor_shape& shape) : node(id, shape) {}
+
 status graph::add_node(node_ptr node)
 {
     if (nodes_.find(node->id) == nodes_.end())
@@ -59,6 +61,8 @@ status graph::exec()
 status graph::finalize()
 {
     check_err(topo_sort() == status::ok, "topo sort return fail");
+    check_err(!order_.empty(), "the graph is empty, what u're trying to do?");
+    output = nodes_[order_[order_.size() - 1]]->output;
 
     return status::ok;
 }

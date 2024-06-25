@@ -10,9 +10,11 @@
 
 namespace opr {
 
-class graph
+class graph : public node
 {
 public:
+    graph() = delete;
+    graph(int id, const tensor_shape& shape);
     // add a node to graph
     status add_node(node_ptr node);
 

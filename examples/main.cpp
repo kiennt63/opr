@@ -6,11 +6,12 @@
 
 int main()
 {
+    opr::tensor_shape shape = {9, 2, 3};
+
     // create computation graph
-    auto g = std::make_shared<opr::graph>();
+    auto g = std::make_shared<opr::graph>(99, shape);
 
     // create nodes to use in the graph, each node represent a computation step
-    opr::tensor_shape shape   = {9, 2, 3};
     opr::node_ptr sub_node    = std::make_shared<opr::subtract_node>(3, shape);
     opr::node_ptr add_node0   = std::make_shared<opr::add_node>(0, shape);
     opr::node_ptr add_node1   = std::make_shared<opr::add_node>(5, shape);
