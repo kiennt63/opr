@@ -20,8 +20,7 @@ const_node::~const_node() {}
 // do absly nothing
 status const_node::exec()
 {
-    auto data = std::get<cpu_buffer>(*output).get<int32_t>();
-    log_inf("[const_node] output: {}", data[0]);
+    log_inf("[const_node] output: {}", std::get<cpu_buffer>(*output));
     return status::ok;
 }
 

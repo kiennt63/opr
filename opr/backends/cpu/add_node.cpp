@@ -30,7 +30,7 @@ status add_node::exec()
         buf_out[i] = buf0[i] + buf1[i];
     }
 
-    log_inf("[add_node]: output: {}", buf_out[out.size() - 1]);
+    log_inf("[add_node] output: {}", out);
     return status::ok;
 }
 

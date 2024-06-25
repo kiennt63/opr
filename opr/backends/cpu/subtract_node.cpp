@@ -30,7 +30,7 @@ status subtract_node::exec()
         buf_out[i] = buf0[i] - buf1[i];
     }
 
-    log_inf("[subtract_node]: output: {}", buf_out[out.size() - 1]);
+    log_inf("[subtract_node] output: {}", out);
     return status::ok;
 }
 
