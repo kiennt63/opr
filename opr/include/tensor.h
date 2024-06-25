@@ -57,9 +57,10 @@ public:
     void* data = nullptr;
 
 protected:
-    explicit buffer(const tensor_shape& shape) : shape_(shape) {}
+    explicit buffer(const tensor_shape& shape) : shape_(shape), size_(shape.elems()) {}
     explicit buffer(const tensor_shape& shape, uint32_t type_size_in_bytes)
         : shape_(shape),
+          size_(shape.elems()),
           size_in_bytes_(type_size_in_bytes * shape.elems())
     {
     }

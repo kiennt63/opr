@@ -6,9 +6,10 @@
 int main()
 {
     opr::graph g;
-    opr::node_ptr add_node    = std::make_shared<opr::add_node>(0);
-    opr::node_ptr const_node0 = std::make_shared<opr::const_node>(1, 3);
-    opr::node_ptr const_node1 = std::make_shared<opr::const_node>(2, 6);
+    opr::tensor_shape shape   = {1};
+    opr::node_ptr add_node    = std::make_shared<opr::add_node>(0, shape);
+    opr::node_ptr const_node0 = std::make_shared<opr::const_node>(1, shape, 3);
+    opr::node_ptr const_node1 = std::make_shared<opr::const_node>(2, shape, 6);
     g.add_node(add_node);
     g.add_node(const_node0);
     g.add_node(const_node1);

@@ -3,13 +3,16 @@
 
 namespace opr {
 
-const_node::const_node(int id, int value) : node(id)
+const_node::const_node(int id, const tensor_shape& shape, int value) : node(id, shape)
 {
-    cpu_buffer buffer({1}, sizeof(int32_t));
+    cpu_buffer buffer(shape, sizeof(int32_t));
 
     auto data = buffer.get<int32_t>();
-    data[0]   = value;
-    output    = std::make_shared<tensor>(std::move(buffer));
+    for (size_t i = 0; i < shape.elems(); i++)
+    {
+        data[i] = value;
+    }
+    output = std::make_shared<tensor>(std::move(buffer));
 }
 
 const_node::~const_node() {}
