@@ -21,15 +21,18 @@ public:
 
     status exec();
 
+    status finalize();
+
 private:
     // perform topological sort
     status topo_sort();
 
     // helper func to topo sort
-    void topo_sort_helper(node_ptr node, std::vector<int>& order);
+    void topo_sort_helper(node_ptr node);
 
     // map of node id to node pointer
     std::unordered_map<int, node_ptr> nodes_;
+    std::vector<int> order_;
 };
 
 }  // namespace opr

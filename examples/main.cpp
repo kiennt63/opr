@@ -27,12 +27,14 @@ int main()
     g->add_node(const_node2);
 
     // setup graph dependencies
-    g->add_depe(0, 1);  // add {const_node0 - id=1} as first dependencies of {add_node0 - id=0}
-    g->add_depe(0, 2);  // add {const_node1 - id=2} as second dependencies of {add_node0 - id=0}
-    g->add_depe(3, 4);  // add {const_node2 - id=4} as first dependencies of {sub_node - id=3}
-    g->add_depe(3, 2);  // add {const_node1 - id=2} as second dependencies of {sub_node - id=3}
-    g->add_depe(5, 0);  // add {add_node0 - id=0} as second dependencies of {add_node1 - id=5}
-    g->add_depe(5, 3);  // add {sub_node - id=3} as second dependencies of {add_node1 - id=5}
+    g->add_depe(0, 1);  // add {id=1} as 1st dependencies of {id=0}
+    g->add_depe(0, 2);  // add {id=2} as 2nd dependencies of {id=0}
+    g->add_depe(3, 4);  // add {id=4} as 1st dependencies of {id=3}
+    g->add_depe(3, 2);  // add {id=2} as 2nd dependencies of {id=3}
+    g->add_depe(5, 0);  // add {id=0} as 1st dependencies of {id=5}
+    g->add_depe(5, 3);  // add {id=3} as 2nd dependencies of {id=5}
+
+    check_err(g->finalize() == opr::status::ok, "graph finalize step failed");
 
     auto ret = g->exec();
     check_err(ret == opr::status::ok, "graph execution failed");

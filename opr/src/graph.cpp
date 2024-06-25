@@ -18,33 +18,36 @@ status graph::add_depe(int from, int to)
     return status::ok;
 }
 
-void graph::topo_sort_helper(node_ptr node, std::vector<int>& order)
+void graph::topo_sort_helper(node_ptr node)
 {
     node->visited = true;
     for (auto&& dep : node->dependencies)
     {
         if (!dep->visited)
         {
-            topo_sort_helper(dep, order);
+            topo_sort_helper(dep);
         }
     }
 
-    order.push_back(node->id);
+    order_.push_back(node->id);
 }
 
 status graph::topo_sort()
 {
-    std::vector<int> order;
-
     for (auto& pair : nodes_)
     {
         if (!pair.second->visited)
         {
-            topo_sort_helper(pair.second, order);
+            topo_sort_helper(pair.second);
         }
     }
 
-    for (int id : order)
+    return status::ok;
+}
+
+status graph::exec()
+{
+    for (int id : order_)
     {
         node_ptr node = nodes_[id];
         node->exec();
@@ -53,7 +56,7 @@ status graph::topo_sort()
     return status::ok;
 }
 
-status graph::exec()
+status graph::finalize()
 {
     check_err(topo_sort() == status::ok, "topo sort return fail");
 
