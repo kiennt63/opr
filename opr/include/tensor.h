@@ -144,7 +144,6 @@ public:
     {
         data       = other.data;
         other.data = nullptr;
-        log_wrn("[buffer]: move constructor called");
     }
 
     // copy assignment
