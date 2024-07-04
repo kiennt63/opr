@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 project(opr)
 
+enable_language(CUDA)
+
 # some macros
 include("${CMAKE_SOURCE_DIR}/cmake/macros/message.cmake")
 include("${CMAKE_SOURCE_DIR}/cmake/macros/options.cmake")
@@ -9,6 +11,9 @@ include("${CMAKE_SOURCE_DIR}/cmake/macros/vendors.cmake")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+
+set(CMAKE_CUDA_STANDARD 17)
+set(CMAKE_CUDA_STANDARD_REQUIRED ON)
 
 # Generate the compile_commands.json file
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
