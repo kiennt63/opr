@@ -10,7 +10,7 @@
 
 int main()
 {
-    opr::tensor_shape shape = {9, 2, 3};
+    opr::tensor_shape shape = {1, 19200, 10800};
 
     // // create computation graph
     // auto g0 = std::make_shared<opr::graph>(99, shape);
@@ -80,11 +80,14 @@ int main()
 
     g0->exec();
 
+    // NOTE: read graph output back to cpu to print out
     auto& cuda_out = std::get<opr::cuda_buffer>(*g0->output);
-    float out[shape.elems()];
+    float* out     = new float[shape.elems()];
     cudaMemcpy(out, cuda_out.data, cuda_out.size_bytes(), cudaMemcpyDeviceToHost);
+    cudaDeviceSynchronize();
     get_last_cuda_errors();
     log_inf("cuda out value: {} {} {}", out[0], out[1], out[2]);
+    free(out);
 
     return 0;
 }

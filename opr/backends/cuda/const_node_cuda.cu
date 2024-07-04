@@ -8,13 +8,15 @@ const_node_cuda::const_node_cuda(int id, const tensor_shape& shape, int value) :
     cuda_buffer buffer(shape, sizeof(int32_t));
     get_last_cuda_errors();
 
-    float tmp[buffer.size()];
+    float* tmp = new float[buffer.size()];
     for (size_t i = 0; i < buffer.size(); ++i)
     {
         tmp[i] = value;
     }
 
     cudaMemcpy(buffer.data, tmp, buffer.size_bytes(), cudaMemcpyHostToDevice);
+
+    free(tmp);
 
     get_last_cuda_errors();
 

@@ -3,10 +3,13 @@
 
 __global__ void vec_add(const float* buf0, const float* buf1, float* out, const int size)
 {
-    int index_1d = blockIdx.y * blockDim.y + blockIdx.x;
-    // printf("index: %d - buf0: %.2f - buf1: %.2f\n", index_1d, buf0[index_1d], buf1[index_1d]);
+    int index_1d = blockIdx.y * blockDim.x + threadIdx.x;
     if (index_1d >= 0 && index_1d < size)
     {
+        // printf("index: %d - blockIdx.y: %d - blockDim.x: %d - threadIdx.x: %d - buf0: %.2f -
+        // buf1: "
+        //        "%.2f\n",
+        //        index_1d, blockIdx.y, blockDim.x, threadIdx.x, buf0[index_1d], buf1[index_1d]);
         out[index_1d] = buf0[index_1d] + buf1[index_1d];
     }
 }
@@ -45,11 +48,12 @@ status add_node_cuda::exec()
     get_last_cuda_errors();
 
     // TODO: handle multi-dimension
-    dim3 thread_dim = {9 * 2 * 3, 1, 1};
-    dim3 block_dim  = {out.size() - 1 / thread_dim.x + 1, 1, 1};
+    dim3 block_dim(512, 1, 1);
+    dim3 grid_dim = ((out.size() + block_dim.x - 1) / block_dim.x);
 
     get_last_cuda_errors();
-    vec_add<<<block_dim, thread_dim>>>(buf0, buf1, buf_out, out.size());
+    log_inf("running vec_add for size = {}", out.size());
+    vec_add<<<grid_dim, block_dim>>>(buf0, buf1, buf_out, out.size());
     get_last_cuda_errors();
 
     cudaDeviceSynchronize();
