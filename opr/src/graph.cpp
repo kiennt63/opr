@@ -62,6 +62,8 @@ status graph::finalize()
 {
     check_err(topo_sort() == status::ok, "topo sort return fail");
     check_err(!order_.empty(), "the graph is empty, what u're trying to do?");
+
+    // NOTE: set output of the graph to be the output of the final node
     output = nodes_[order_[order_.size() - 1]]->output;
 
     return status::ok;

@@ -9,7 +9,7 @@ int main()
     opr::tensor_shape shape = {9, 2, 3};
 
     // create computation graph
-    auto g = std::make_shared<opr::graph>(99, shape);
+    auto g0 = std::make_shared<opr::graph>(99, shape);
 
     // create nodes to use in the graph, each node represent a computation step
     opr::node_ptr sub_node    = std::make_shared<opr::subtract_node>(3, shape);
@@ -20,24 +20,37 @@ int main()
     opr::node_ptr const_node2 = std::make_shared<opr::const_node>(4, shape, 11);
 
     // add nodes to graph
-    g->add_node(sub_node);
-    g->add_node(add_node0);
-    g->add_node(add_node1);
-    g->add_node(const_node0);
-    g->add_node(const_node1);
-    g->add_node(const_node2);
+    g0->add_node(sub_node);
+    g0->add_node(add_node0);
+    g0->add_node(add_node1);
+    g0->add_node(const_node0);
+    g0->add_node(const_node1);
+    g0->add_node(const_node2);
 
     // setup graph dependencies
-    g->add_depe(0, 1);  // add {id=1} as 1st dependencies of {id=0}
-    g->add_depe(0, 2);  // add {id=2} as 2nd dependencies of {id=0}
-    g->add_depe(3, 4);  // add {id=4} as 1st dependencies of {id=3}
-    g->add_depe(3, 2);  // add {id=2} as 2nd dependencies of {id=3}
-    g->add_depe(5, 0);  // add {id=0} as 1st dependencies of {id=5}
-    g->add_depe(5, 3);  // add {id=3} as 2nd dependencies of {id=5}
+    g0->add_depe(0, 1);  // add {id=1} as 1st dependencies of {id=0}
+    g0->add_depe(0, 2);  // add {id=2} as 2nd dependencies of {id=0}
+    g0->add_depe(3, 4);  // add {id=4} as 1st dependencies of {id=3}
+    g0->add_depe(3, 2);  // add {id=2} as 2nd dependencies of {id=3}
+    g0->add_depe(5, 0);  // add {id=0} as 1st dependencies of {id=5}
+    g0->add_depe(5, 3);  // add {id=3} as 2nd dependencies of {id=5}
 
-    check_err(g->finalize() == opr::status::ok, "graph finalize step failed");
+    check_err(g0->finalize() == opr::status::ok, "graph finalize step failed");
 
-    auto ret = g->exec();
+    auto g1 = std::make_shared<opr::graph>(100, shape);
+
+    opr::node_ptr add_node2   = std::make_shared<opr::add_node>(6, shape);
+    opr::node_ptr const_node3 = std::make_shared<opr::const_node>(7, shape, 11);
+
+    g1->add_node(add_node2);
+    g1->add_node(const_node3);
+    g1->add_node(g0);
+
+    g1->add_depe(6, 7);
+    g1->add_depe(6, 99);
+
+    check_err(g1->finalize() == opr::status::ok, "graph finalize step failed");
+    auto ret = g1->exec();
     check_err(ret == opr::status::ok, "graph execution failed");
 
     return 0;
