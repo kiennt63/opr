@@ -1,3 +1,5 @@
+#include <fstream>
+
 #include "graph.h"
 
 namespace opr {
@@ -54,6 +56,31 @@ status graph::exec()
         node_ptr node = nodes_[id];
         node->exec();
     }
+
+    return status::ok;
+}
+
+status graph::gen_dot(const std::string& filename)
+{
+    std::ofstream file(filename.c_str());
+
+    file << "digraph G {\n";
+
+    for (const auto& pair : nodes_)
+    {
+        auto& node = pair.second;
+        if (node->dependencies.empty())
+        {  // Ensure all nodes appear in the graph
+            file << "    " << pair.first << ";\n";
+        }
+        for (auto& dep : node->dependencies)
+        {
+            file << "    " << pair.first << " -> " << dep->id << ";\n";
+        }
+    }
+
+    file << "}\n";
+    file.close();
 
     return status::ok;
 }

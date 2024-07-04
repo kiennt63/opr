@@ -53,5 +53,7 @@ int main()
     auto ret = g1->exec();
     check_err(ret == opr::status::ok, "graph execution failed");
 
+    g0->gen_dot("output/graph.dot");
+
     return 0;
 }

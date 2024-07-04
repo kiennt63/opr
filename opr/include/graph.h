@@ -21,6 +21,8 @@ public:
     // add dependency edge from node v to w
     status add_depe(int from, int to);
 
+    status gen_dot(const std::string& filename);
+
     status exec();
 
     status finalize();
