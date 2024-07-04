@@ -10,7 +10,7 @@
 
 int main()
 {
-    opr::tensor_shape shape = {1, 19200, 10800};
+    opr::tensor_shape shape = {1, 1920, 1080};
 
     // // create computation graph
     // auto g0 = std::make_shared<opr::graph>(99, shape);
