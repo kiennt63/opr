@@ -44,7 +44,7 @@ cpu_buffer& cpu_buffer::operator=(const cpu_buffer& other)
             free(data);
         }
         buffer::operator=(other);
-        data = malloc(size_in_bytes_);
+        data            = malloc(size_in_bytes_);
         if (size_ > 0)
         {
             memcpy(data, other.data, size_in_bytes_);
