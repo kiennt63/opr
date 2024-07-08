@@ -13,13 +13,15 @@ int main()
     // create computation graph
     auto g0 = std::make_shared<opr::graph>(99, shape);
 
+    std::vector<int32_t> test(shape.elems(), 11);
+
     // create nodes to use in the graph, each node represent a computation step
     opr::node_ptr sub_node    = std::make_shared<opr::subtract_node>(3, shape);
     opr::node_ptr add_node0   = std::make_shared<opr::add_node>(0, shape);
     opr::node_ptr add_node1   = std::make_shared<opr::add_node>(5, shape);
     opr::node_ptr const_node0 = std::make_shared<opr::const_node>(1, shape, 3);
     opr::node_ptr const_node1 = std::make_shared<opr::const_node>(2, shape, 6);
-    opr::node_ptr const_node2 = std::make_shared<opr::const_node>(4, shape, 11);
+    opr::node_ptr const_node2 = std::make_shared<opr::const_node>(4, shape, test.data());
 
     // add nodes to graph
     g0->add_node(sub_node);

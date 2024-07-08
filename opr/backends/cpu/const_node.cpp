@@ -15,6 +15,14 @@ const_node::const_node(int id, const tensor_shape& shape, int value) : node(id, 
     output = std::make_shared<tensor>(std::move(buffer));
 }
 
+const_node::const_node(int id, const tensor_shape& shape, void* value) : node(id, shape)
+{
+    cpu_buffer buffer(shape, sizeof(int32_t));
+
+    memcpy(buffer.data, value, buffer.size_bytes());
+    output = std::make_shared<tensor>(std::move(buffer));
+}
+
 const_node::~const_node() {}
 
 // do absly nothing

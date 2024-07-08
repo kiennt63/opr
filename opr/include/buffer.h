@@ -20,7 +20,11 @@ class buffer
 public:
     buffer() = default;
     const tensor_shape& shape() const;
+
+    // return num elements of the buffer
     uint32_t size() const;
+
+    // return size in byte of the buffer
     uint32_t size_bytes() const;
     void* data = nullptr;
 
