@@ -2,11 +2,6 @@ cmake_minimum_required(VERSION 3.5)
 
 project(opr)
 
-if(NOT APPLE)
-    enable_language(CUDA)
-endif()
-
-
 # some macros
 include("${CMAKE_SOURCE_DIR}/cmake/macros/message.cmake")
 include("${CMAKE_SOURCE_DIR}/cmake/macros/options.cmake")

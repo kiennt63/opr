@@ -78,7 +78,7 @@ int main()
     //
     // g0->exec();
     //
-    // // NOTE: read graph output back to cpu to print out
+    // NOTE: read graph output back to cpu to print out
     // auto& cuda_out = std::get<opr::cuda_buffer>(*g0->output);
     // float* out     = new float[shape.elems()];
     // cudaMemcpy(out, cuda_out.data, cuda_out.size_bytes(), cudaMemcpyDeviceToHost);
