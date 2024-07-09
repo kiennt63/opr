@@ -1,16 +1,10 @@
-# .cmake-format.yaml
-# line_width: 80  # Maximum line width
+line_width: 60  # Maximum line width
 tab_size: 4     # Size of tabs
 use_tabchars: False  # Use spaces instead of tabs
 indent_width: 4  # Number of spaces per indentation level
-
-# Other formatting options
 keyword_case: upper  # Set all keywords to uppercase
 command_case: lower  # Set all commands to lowercase
-dangle_parens: False  # Avoid dangling parentheses
+dangle_parens: True  # Avoid dangling parentheses
 space_between_parens: True  # Space between parentheses
 enable_sort: False  # Disable automatic sorting of arguments
-
-# Custom command formatting
-# additional_commands:
-#   - custom_command
+always_wrap: ['include_directories', 'link_directories']
