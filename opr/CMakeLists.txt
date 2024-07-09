@@ -16,7 +16,7 @@ add_library(opr ${SRCS})
 target_include_directories(
     opr SYSTEM
     PUBLIC ${_VENDOR_INCLUDE_DIR_}
-           /usr/local/cuda-12.2/targets/x86_64-linux/include
+           /usr/local/cuda/targets/x86_64-linux/include
 )
 
 target_include_directories(
