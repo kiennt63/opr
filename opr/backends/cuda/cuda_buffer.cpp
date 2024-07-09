@@ -1,4 +1,5 @@
 #include "cuda_buffer.h"
+#include "logger.h"
 
 namespace opr {
 

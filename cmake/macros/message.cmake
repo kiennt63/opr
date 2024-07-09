@@ -2,79 +2,84 @@
 # Message
 # -------
 
-#### message
+# message
 if(NOT WIN32)
-  string(ASCII 27 Esc)
-  set(ColourReset "${Esc}[m")
-  set(ColourBold  "${Esc}[1m")
-  set(Red         "${Esc}[31m")
-  set(Green       "${Esc}[32m")
-  set(Yellow      "${Esc}[33m")
-  set(Blue        "${Esc}[34m")
-  set(Magenta     "${Esc}[35m")
-  set(Cyan        "${Esc}[36m")
-  set(White       "${Esc}[37m")
-  set(BoldRed     "${Esc}[1;31m")
-  set(BoldGreen   "${Esc}[1;32m")
-  set(BoldYellow  "${Esc}[1;33m")
-  set(BoldBlue    "${Esc}[1;34m")
-  set(BoldMagenta "${Esc}[1;35m")
-  set(BoldCyan    "${Esc}[1;36m")
-  set(BoldWhite   "${Esc}[1;37m")
+    string(ASCII 27 Esc)
+    set(ColourReset "${Esc}[m")
+    set(ColourBold "${Esc}[1m")
+    set(Red "${Esc}[31m")
+    set(Green "${Esc}[32m")
+    set(Yellow "${Esc}[33m")
+    set(Blue "${Esc}[34m")
+    set(Magenta "${Esc}[35m")
+    set(Cyan "${Esc}[36m")
+    set(White "${Esc}[37m")
+    set(BoldRed "${Esc}[1;31m")
+    set(BoldGreen "${Esc}[1;32m")
+    set(BoldYellow "${Esc}[1;33m")
+    set(BoldBlue "${Esc}[1;34m")
+    set(BoldMagenta "${Esc}[1;35m")
+    set(BoldCyan "${Esc}[1;36m")
+    set(BoldWhite "${Esc}[1;37m")
 endif()
 
-#### Print variable
+# Print variable
 function(print var)
     message("${Blue} ${var}: ${${var}}")
 endfunction()
 
-
-#### message
+# message
 macro(print_title string)
     message(${White})
     message(STATUS ${White} ${string})
     message(${White})
 endmacro()
 
-#### message
+# message
 macro(print_dir var string)
     message(${Yellow} "   " ${var} ${Green} ${ColourReset})
     foreach(library_dir ${string})
-        message(${Yellow} "    -->" ${Green} "   " ${library_dir} ${ColourReset})
+        message(${Yellow} "    -->" ${Green} "   " ${library_dir}
+                ${ColourReset})
     endforeach()
 endmacro()
 
-#### message
+# message
 macro(print_cmake_modules var string)
     message(${Yellow} "   " ${var} ${Green} ${ColourReset})
     foreach(library_dir ${string})
-        message(${Yellow} "    -->" ${Green} "   " ${library_dir} ${ColourReset})
+        message(${Yellow} "    -->" ${Green} "   " ${library_dir}
+                ${ColourReset})
     endforeach()
 endmacro()
 
-#### message
+# message
 macro(print_option option)
-    if (${option})
-         message(${Yellow} "   " "[${option}]" " = ${BoldGreen} ON" ${ColourReset})
+    if(${option})
+        message(${Yellow} "   " "[${option}]" " = ${BoldGreen} ON"
+                ${ColourReset})
     else(${option})
-        message(${Yellow} "   " "[${option}]" " = ${BoldRed} OFF" ${ColourReset})
+        message(${Yellow} "   " "[${option}]" " = ${BoldRed} OFF"
+                ${ColourReset})
     endif(${option})
 endmacro()
 
-#### message
+# message
 macro(print_build_type string option)
-    if (${option} STREQUAL "Release")
-        message(${Yellow} "   " ${string} " =${BoldGreen} RELEASE" ${ColourReset})
-    else ()
+    if(${option} STREQUAL "Release")
+        message(${Yellow} "   " ${string} " =${BoldGreen} RELEASE"
+                ${ColourReset})
+    else()
         message(${Yellow} "   " ${string} " =${BoldBlue} DEBUG" ${ColourReset})
     endif()
 endmacro()
 
-#### message
+# message
 macro(print_lib string)
-    if (OPT_MESSAGE_LIB)
-        message(${BoldBlue} "   " ${string} " : "  ${ColourReset})
-        message(${BoldBlue} "   " "--------------------------------------"  ${ColourReset})
+    if(OPT_MESSAGE_LIB)
+        message(${BoldBlue} "   " ${string} " : " ${ColourReset})
+        message(${BoldBlue} "   " "--------------------------------------"
+                ${ColourReset})
         print_dir("[${string}_INCLUDE_DIR]" "${${string}_INCLUDE_DIR}")
         print_dir("[${string}_LIBRARY_DIR]" "${${string}_LIBRARY_DIR}")
         print_dir("[${string}_LIBRARIES]" "${${string}_LIBRARIES}")

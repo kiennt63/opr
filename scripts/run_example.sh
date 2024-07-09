@@ -4,4 +4,4 @@
 
 mkdir -p output
 
-./build/debug/bin/example
+./build/debug/bin/cuda

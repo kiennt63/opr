@@ -31,12 +31,17 @@ set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR} ${CMAKE_MODULE_PATH})
 set(CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR} ${CMAKE_PREFIX_PATH})
 
 # output dir
-if (NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel." FORCE)
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE
+        "Release"
+        CACHE
+            STRING
+            "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel."
+            FORCE)
 endif()
-if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
     set(BUILD_TYPE_STR "release")
-else ()
+else()
     set(BUILD_TYPE_STR "debug")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_DEBUG -g -O0")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_DEBUG -g -O0")
@@ -48,20 +53,22 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${BUILD_TYPE_STR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${BUILD_TYPE_STR}/bin)
 
 # generic c/c++ flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -std=c++17 -Werror -Wall -Wextra -fdiagnostics-color=always")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DEIGEN_MPL2_ONLY -fPIC -Werror -Wall -Wextra")
+set(CMAKE_CXX_FLAGS
+    "${CMAKE_CXX_FLAGS} -fPIC -std=c++17 -Werror -Wall -Wextra -fdiagnostics-color=always"
+)
+set(CMAKE_C_FLAGS
+    "${CMAKE_C_FLAGS} -DEIGEN_MPL2_ONLY -fPIC -Werror -Wall -Wextra")
 
-if (NOT APPLE)
+if(NOT APPLE)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-packed-bitfield-compat")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-packed-bitfield-compat")
-endif ()
+endif()
 
-
-
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/modules")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
+                      "${PROJECT_SOURCE_DIR}/cmake/modules")
 
 # dependencies
-include (${CMAKE_SOURCE_DIR}/cmake/dependencies.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/dependencies.cmake)
 
 # into the project
 add_subdirectory(opr)
