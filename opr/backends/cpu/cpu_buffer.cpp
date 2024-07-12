@@ -78,10 +78,9 @@ cpu_buffer& cpu_buffer::operator=(cpu_buffer&& other) noexcept
     return *this;
 }
 
-template <typename t>
-t* cpu_buffer::get() const
+void* cpu_buffer::get() const
 {
-    return reinterpret_cast<t*>(data);
+    return data;
 }
 
 cpu_buffer::~cpu_buffer()
@@ -93,7 +92,7 @@ std::ostream& operator<<(std::ostream& os, const cpu_buffer& obj)
 {
     for (size_t i = 0; i < obj.size(); i++)
     {
-        os << obj.get<int32_t>()[i] << " ";
+        os << static_cast<float32_t*>(obj.data)[i] << " ";
     }
     os << "\n";
     return os;

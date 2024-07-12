@@ -8,6 +8,8 @@ enum status
     err
 };
 
+}  // namespace opr
+
 using char_t     = char;
 using int8_t     = signed char;
 using int16_t    = signed short;
@@ -20,5 +22,3 @@ using uint64_t   = unsigned long;
 using float32_t  = float;
 using float64_t  = double;
 using float128_t = long double;
-
-}  // namespace opr

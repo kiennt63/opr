@@ -26,8 +26,7 @@ public:
     // move assignment
     cpu_buffer& operator=(cpu_buffer&& other) noexcept;
 
-    template <typename t>
-    t* get() const;
+    void* get() const;
 
     ~cpu_buffer();
 };
@@ -57,7 +56,7 @@ struct formatter<opr::cpu_buffer>
         constexpr int print_truncation_length = 4;
 
         std::string values_str = "[";
-        const auto values      = obj.get<int32_t>();
+        const auto values      = static_cast<float32_t*>(obj.get());
         for (size_t i = 0; i < obj.size(); ++i)
         {
             if (i > print_truncation_length && i != obj.size() - 1) continue;
