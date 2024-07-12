@@ -3,7 +3,7 @@ file(GLOB_RECURSE SRCS
      ${CMAKE_CURRENT_SOURCE_DIR}/backends/cpu/*.cpp
 )
 
-if(NOT APPLE)
+if(OPT_CUDA_ENABLED)
     file(GLOB_RECURSE CUDA_SRCS
          ${CMAKE_CURRENT_SOURCE_DIR}/backends/cuda/*.cu
          ${CMAKE_CURRENT_SOURCE_DIR}/backends/cuda/*.cpp

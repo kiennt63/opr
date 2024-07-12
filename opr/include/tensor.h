@@ -2,7 +2,7 @@
 
 #include "backends/cpu/cpu_buffer.h"
 
-#ifdef __APPLE__
+#ifndef CUDA_ENABLED
 using tensor = std::variant<opr::cpu_buffer>;
 #else
 #include "backends/cuda/cuda_buffer.h"
