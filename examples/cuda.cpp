@@ -1,5 +1,6 @@
-#include "backends/cuda/add_node_cuda.h"
-#include "backends/cuda/const_node_cuda.h"
+#include "backends/cuda/add_node.h"
+#include "backends/cuda/const_node.h"
+#include "backends/cuda/sub_node.h"
 
 #include "graph.h"
 #include "logger.h"
@@ -12,9 +13,11 @@ int main()
     auto g0 = std::make_shared<opr::graph>(99, shape);
 
     // create nodes to use in the graph, each node represent a computation step
-    opr::node_ptr add_node0   = std::make_shared<opr::add_node_cuda>(0, shape);
-    opr::node_ptr const_node0 = std::make_shared<opr::const_node_cuda>(1, shape, 3);
-    opr::node_ptr const_node1 = std::make_shared<opr::const_node_cuda>(2, shape, 6);
+    opr::node_ptr add_node0   = std::make_shared<opr::cuda::add_node<float32_t>>(0, shape);
+    opr::node_ptr const_node0 = std::make_shared<opr::cuda::const_node<float32_t>>(1, shape, 3);
+    opr::node_ptr const_node1 = std::make_shared<opr::cuda::const_node<float32_t>>(2, shape, 6);
+
+    opr::node_ptr sub_node0 = std::make_shared<opr::cuda::sub_node<float32_t>>(0, shape);
 
     // add nodes to graph
     g0->add_node(add_node0);

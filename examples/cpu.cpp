@@ -14,12 +14,13 @@ int main()
     std::vector<float32_t> test(shape.elems(), 11);
 
     // create nodes to use in the graph, each node represent a computation step
-    opr::node_ptr sub_node    = std::make_shared<opr::subtract_node<float32_t>>(3, shape);
-    opr::node_ptr add_node0   = std::make_shared<opr::add_node<float32_t>>(0, shape);
-    opr::node_ptr add_node1   = std::make_shared<opr::add_node<float32_t>>(5, shape);
-    opr::node_ptr const_node0 = std::make_shared<opr::const_node<float32_t>>(1, shape, 3);
-    opr::node_ptr const_node1 = std::make_shared<opr::const_node<float32_t>>(2, shape, 6);
-    opr::node_ptr const_node2 = std::make_shared<opr::const_node<float32_t>>(4, shape, test.data());
+    opr::node_ptr sub_node    = std::make_shared<opr::cpu::subtract_node<float32_t>>(3, shape);
+    opr::node_ptr add_node0   = std::make_shared<opr::cpu::add_node<float32_t>>(0, shape);
+    opr::node_ptr add_node1   = std::make_shared<opr::cpu::add_node<float32_t>>(5, shape);
+    opr::node_ptr const_node0 = std::make_shared<opr::cpu::const_node<float32_t>>(1, shape, 3);
+    opr::node_ptr const_node1 = std::make_shared<opr::cpu::const_node<float32_t>>(2, shape, 6);
+    opr::node_ptr const_node2 =
+        std::make_shared<opr::cpu::const_node<float32_t>>(4, shape, test.data());
 
     // add nodes to graph
     g0->add_node(sub_node);
@@ -41,8 +42,8 @@ int main()
 
     auto g1 = std::make_shared<opr::graph>(100, shape);
 
-    opr::node_ptr add_node2   = std::make_shared<opr::add_node<float32_t>>(6, shape);
-    opr::node_ptr const_node3 = std::make_shared<opr::const_node<float32_t>>(7, shape, 11);
+    opr::node_ptr add_node2   = std::make_shared<opr::cpu::add_node<float32_t>>(6, shape);
+    opr::node_ptr const_node3 = std::make_shared<opr::cpu::const_node<float32_t>>(7, shape, 11);
 
     g1->add_node(add_node2);
     g1->add_node(const_node3);

@@ -14,12 +14,16 @@ endif()
 add_library(opr ${SRCS})
 
 target_include_directories(
-    opr SYSTEM
-    PUBLIC ${_VENDOR_INCLUDE_DIR_}
-           /usr/local/cuda/targets/x86_64-linux/include
-)
-
-target_include_directories(
     opr PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
                ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+
+if(OPT_CUDA_ENABLED)
+    target_include_directories(
+        opr SYSTEM
+        PUBLIC ${_VENDOR_INCLUDE_DIR_}
+               /usr/local/cuda/targets/x86_64-linux/include
+    )
+
+    target_link_libraries(opr CUDA::cudart)
+endif()

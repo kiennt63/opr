@@ -1,6 +1,7 @@
 #include <fstream>
 
 #include "graph.h"
+#include "logger.h"
 
 namespace opr {
 

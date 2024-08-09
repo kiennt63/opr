@@ -3,7 +3,7 @@
 #include "logger.h"
 #include "node.h"
 
-namespace opr {
+namespace opr::cpu {
 
 template <typename t>
 class const_node : public node
@@ -39,4 +39,4 @@ public:
     }
 };
 
-}  // namespace opr
+}  // namespace opr::cpu

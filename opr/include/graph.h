@@ -1,11 +1,8 @@
 #pragma once
 
-#include <list>
-#include <stack>
-#include <unordered_set>
+#include <unordered_map>
 
 #include "defines.h"
-#include "logger.h"
 #include "node.h"
 
 namespace opr {
