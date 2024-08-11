@@ -21,19 +21,19 @@ IncludeBlocks: "Preserve"
 BinPackArguments: "true"
 BinPackParameters: "true"
 BreakAfterJavaFieldAnnotations: "true"
-BreakBeforeBraces: Custom
-BraceWrapping:
-  AfterCaseLabel: true
-  AfterClass: true
-  AfterControlStatement: true
-  AfterEnum: true
-  AfterFunction: true
-  AfterObjCDeclaration: true
-  AfterStruct: true
-  AfterUnion: true
-  AfterExternBlock: true
-  BeforeCatch: true
-  BeforeElse: true
+BreakBeforeBraces: Attach
+# BraceWrapping:
+#   AfterCaseLabel: true
+#   AfterClass: true
+#   AfterControlStatement: true
+#   AfterEnum: true
+#   AfterFunction: true
+#   AfterObjCDeclaration: true
+#   AfterStruct: true
+#   AfterUnion: true
+#   AfterExternBlock: true
+#   BeforeCatch: true
+#   BeforeElse: true
 BreakBeforeTernaryOperators: "true"
 BreakConstructorInitializers: BeforeColon
 BreakInheritanceList: BeforeColon

@@ -6,18 +6,15 @@
 namespace opr::cuda {
 
 template <typename t>
-class sub_node : public node
-{
+class vec_sub_node : public node {
 public:
-    sub_node(int id, const tensor_shape& shape) : node(id, shape)
-    {
+    vec_sub_node(int id, const tensor_shape& shape) : node(id, shape) {
         cuda_buffer buffer(shape, sizeof(int32_t));
         output = std::make_shared<tensor>(std::move(buffer));
         cuda_check_err();
     }
-    virtual ~sub_node() {}
-    status exec() override
-    {
+    virtual ~vec_sub_node() {}
+    status exec() override {
         check_err(input.size() == 2, "[sub_node]: inputs size must be 2");
 
         auto& first  = std::get<cuda_buffer>(*input[0]);

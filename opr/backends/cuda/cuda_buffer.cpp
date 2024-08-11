@@ -5,20 +5,16 @@ namespace opr {
 
 cuda_buffer::cuda_buffer(const tensor_shape& shape) : buffer(shape) {}
 cuda_buffer::cuda_buffer(const tensor_shape& shape, uint32_t type_size_in_bytes)
-    : buffer(shape, type_size_in_bytes)
-{
+    : buffer(shape, type_size_in_bytes) {
     // TODO: allocate a cuda buffer in here with shape and size
-    if (data)
-    {
+    if (data) {
         cudaFree(data);
     }
     cudaMalloc((void**)&data, size_in_bytes_);
 }
 // copy constructor
-cuda_buffer::cuda_buffer(const cuda_buffer& other) : buffer(other)
-{
-    if (data)
-    {
+cuda_buffer::cuda_buffer(const cuda_buffer& other) : buffer(other) {
+    if (data) {
         cudaFree(data);
     }
     cudaMalloc((void**)&data, size_in_bytes_);
@@ -27,30 +23,23 @@ cuda_buffer::cuda_buffer(const cuda_buffer& other) : buffer(other)
 }
 
 // move constructor
-cuda_buffer::cuda_buffer(cuda_buffer&& other) noexcept : buffer(std::move(other))
-{
+cuda_buffer::cuda_buffer(cuda_buffer&& other) noexcept : buffer(std::move(other)) {
     data       = other.data;
     other.data = nullptr;
 }
 
 // copy assignment
-cuda_buffer& cuda_buffer::operator=(const cuda_buffer& other)
-{
-    if (this != &other)
-    {
-        if (data)
-        {
+cuda_buffer& cuda_buffer::operator=(const cuda_buffer& other) {
+    if (this != &other) {
+        if (data) {
             cudaFree(data);
         }
         buffer::operator=(other);
         cudaMalloc((void**)&data, size_in_bytes_);
 
-        if (size_ > 0)
-        {
+        if (size_ > 0) {
             cudaMemcpy(data, other.data, size_in_bytes_, cudaMemcpyDeviceToDevice);
-        }
-        else
-        {
+        } else {
             data = nullptr;
         }
     }
@@ -59,12 +48,9 @@ cuda_buffer& cuda_buffer::operator=(const cuda_buffer& other)
 }
 
 // move assignment
-cuda_buffer& cuda_buffer::operator=(cuda_buffer&& other) noexcept
-{
-    if (this != &other)
-    {
-        if (data)
-        {
+cuda_buffer& cuda_buffer::operator=(cuda_buffer&& other) noexcept {
+    if (this != &other) {
+        if (data) {
             cudaFree(data);
         }
         buffer::operator=(std::move(other));
@@ -75,8 +61,7 @@ cuda_buffer& cuda_buffer::operator=(cuda_buffer&& other) noexcept
     return *this;
 }
 
-cuda_buffer::~cuda_buffer()
-{
+cuda_buffer::~cuda_buffer() {
     cudaFree(data);
 }
 

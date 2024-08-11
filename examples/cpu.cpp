@@ -1,11 +1,10 @@
-#include "backends/cpu/add_node.h"
 #include "backends/cpu/const_node.h"
-#include "backends/cpu/subtract_node.h"
+#include "backends/cpu/vec_add_node.h"
+#include "backends/cpu/vec_sub_node.h"
 #include "graph.h"
 #include "logger.h"
 
-int main()
-{
+int main() {
     opr::tensor_shape shape = {1, 1920, 1080};
 
     // create computation graph
@@ -14,9 +13,9 @@ int main()
     std::vector<float32_t> test(shape.elems(), 11);
 
     // create nodes to use in the graph, each node represent a computation step
-    opr::node_ptr sub_node    = std::make_shared<opr::cpu::subtract_node<float32_t>>(3, shape);
-    opr::node_ptr add_node0   = std::make_shared<opr::cpu::add_node<float32_t>>(0, shape);
-    opr::node_ptr add_node1   = std::make_shared<opr::cpu::add_node<float32_t>>(5, shape);
+    opr::node_ptr sub_node    = std::make_shared<opr::cpu::vec_sub_node<float32_t>>(3, shape);
+    opr::node_ptr add_node0   = std::make_shared<opr::cpu::vec_add_node<float32_t>>(0, shape);
+    opr::node_ptr add_node1   = std::make_shared<opr::cpu::vec_add_node<float32_t>>(5, shape);
     opr::node_ptr const_node0 = std::make_shared<opr::cpu::const_node<float32_t>>(1, shape, 3);
     opr::node_ptr const_node1 = std::make_shared<opr::cpu::const_node<float32_t>>(2, shape, 6);
     opr::node_ptr const_node2 =
@@ -42,7 +41,7 @@ int main()
 
     auto g1 = std::make_shared<opr::graph>(100, shape);
 
-    opr::node_ptr add_node2   = std::make_shared<opr::cpu::add_node<float32_t>>(6, shape);
+    opr::node_ptr add_node2   = std::make_shared<opr::cpu::vec_add_node<float32_t>>(6, shape);
     opr::node_ptr const_node3 = std::make_shared<opr::cpu::const_node<float32_t>>(7, shape, 11);
 
     g1->add_node(add_node2);

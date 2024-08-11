@@ -5,8 +5,7 @@ using namespace opr;
 
 std::shared_ptr<spdlog::logger> logger::logger_;
 
-void logger::init()
-{
+void logger::init() {
     logger_ = spdlog::stdout_color_mt("opr");
     logger_->set_level(spdlog::level::trace);
     spdlog::set_default_logger(logger_);

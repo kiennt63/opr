@@ -5,16 +5,14 @@
 #define get_last_cuda_errors()                                                 \
     {                                                                          \
         cudaError_t err = cudaGetLastError();                                  \
-        if (err != cudaSuccess)                                                \
-        {                                                                      \
+        if (err != cudaSuccess) {                                              \
             log_inf("{}: {}", cudaGetErrorName(err), cudaGetErrorString(err)); \
         }                                                                      \
     }
 
 namespace opr {
 
-class cuda_buffer : public buffer
-{
+class cuda_buffer : public buffer {
 public:
     cuda_buffer() = default;
     cuda_buffer(const tensor_shape& shape);

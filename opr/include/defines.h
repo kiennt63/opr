@@ -2,11 +2,7 @@
 
 namespace opr {
 
-enum status
-{
-    ok = 0,
-    err
-};
+enum status { ok = 0, err };
 
 }  // namespace opr
 

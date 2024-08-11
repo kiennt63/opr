@@ -6,19 +6,16 @@
 namespace opr::cpu {
 
 template <typename t>
-class add_node : public node
-{
+class vec_add_node : public node {
 public:
-    add_node(int id, const tensor_shape& shape) : node(id, shape)
-    {
+    vec_add_node(int id, const tensor_shape& shape) : node(id, shape) {
         cpu_buffer buffer(shape, sizeof(t));
         output = std::make_shared<tensor>(std::move(buffer));
     }
 
-    virtual ~add_node() {}
+    virtual ~vec_add_node() {}
 
-    status exec() override
-    {
+    status exec() override {
         check_err(input.size() == 2, "[add_node]: inputs size must be 2");
 
         auto& first  = std::get<cpu_buffer>(*input[0]);
@@ -31,8 +28,7 @@ public:
         auto buf0    = static_cast<t*>(first.get());
         auto buf1    = static_cast<t*>(second.get());
         auto buf_out = static_cast<t*>(out.get());
-        for (size_t i = 0; i < out.size(); i++)
-        {
+        for (size_t i = 0; i < out.size(); i++) {
             buf_out[i] = buf0[i] + buf1[i];
         }
 

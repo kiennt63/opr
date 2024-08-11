@@ -7,8 +7,7 @@
 namespace opr {
 
 template <typename t>
-class op
-{
+class op {
 public:
     status exec() { return static_cast<t*>(this)->exec(); }
 };

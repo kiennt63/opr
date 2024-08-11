@@ -12,8 +12,7 @@ class node;
 
 using node_ptr = std::shared_ptr<node>;
 
-class node
-{
+class node {
 public:
     node() = delete;
     node(int id, const tensor_shape& shape) : id(id), visited(false), shape_(shape) {}

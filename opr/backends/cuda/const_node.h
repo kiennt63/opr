@@ -6,17 +6,14 @@
 namespace opr::cuda {
 
 template <typename t>
-class const_node : public node
-{
+class const_node : public node {
 public:
-    const_node(int id, const tensor_shape& shape, int value) : node(id, shape)
-    {
+    const_node(int id, const tensor_shape& shape, int value) : node(id, shape) {
         cuda_buffer buffer(shape, sizeof(int32_t));
         get_last_cuda_errors();
 
         t* tmp = new t[buffer.size()];
-        for (size_t i = 0; i < buffer.size(); ++i)
-        {
+        for (size_t i = 0; i < buffer.size(); ++i) {
             tmp[i] = value;
         }
 
@@ -30,8 +27,7 @@ public:
         get_last_cuda_errors();
     }
     virtual ~const_node() {}
-    status exec() override
-    {
+    status exec() override {
         log_inf("[const_node]: exec()");
         return status::ok;
     }

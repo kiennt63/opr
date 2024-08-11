@@ -7,8 +7,7 @@
 
 namespace opr {
 
-class graph : public node
-{
+class graph : public node {
 public:
     graph() = delete;
     graph(int id, const tensor_shape& shape);

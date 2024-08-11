@@ -6,8 +6,7 @@
 
 namespace opr {
 
-class tensor_shape : public std::vector<uint32_t>
-{
+class tensor_shape : public std::vector<uint32_t> {
 public:
     using std::vector<uint32_t>::vector;
     bool operator==(const tensor_shape& other);
@@ -15,8 +14,7 @@ public:
     uint32_t elems() const;
 };
 
-class buffer
-{
+class buffer {
 public:
     buffer() = default;
     const tensor_shape& shape() const;

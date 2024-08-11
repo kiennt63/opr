@@ -7,8 +7,7 @@
 
 namespace opr {
 
-class logger
-{
+class logger {
 public:
     static void init();
     inline static std::shared_ptr<spdlog::logger> get_logger() { return logger_; }
@@ -24,35 +23,28 @@ private:
 #define log_wrn(...) SPDLOG_WARN(__VA_ARGS__)
 
 #define log_err(...)               \
-    do                             \
-    {                              \
+    do {                           \
         SPDLOG_ERROR(__VA_ARGS__); \
         std::exit(EXIT_FAILURE);   \
     } while (false)
 
 #define check_inf(value, ...)         \
-    do                                \
-    {                                 \
-        if (!(value))                 \
-        {                             \
+    do {                              \
+        if (!(value)) {               \
             SPDLOG_INFO(__VA_ARGS__); \
         }                             \
     } while (false)
 
 #define check_wrn(value, ...)         \
-    do                                \
-    {                                 \
-        if (!(value))                 \
-        {                             \
+    do {                              \
+        if (!(value)) {               \
             SPDLOG_WARN(__VA_ARGS__); \
         }                             \
     } while (false)
 
 #define check_err(value, ...)          \
-    do                                 \
-    {                                  \
-        if (!(value))                  \
-        {                              \
+    do {                               \
+        if (!(value)) {                \
             SPDLOG_ERROR(__VA_ARGS__); \
             exit(EXIT_FAILURE);        \
         }                              \
