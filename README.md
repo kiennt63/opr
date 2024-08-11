@@ -1,5 +1,15 @@
 ### opr
 
+##### RUN EXAMPLE
+- Build the project using build script: 
+```
+    ./scripts/build.sh
+```
+- Run the binary using run script (build step included)
+```
+    ./scripts/run_example.sh
+```
+
 ##### VISUALIZE GRAPH
 - We use graphviz to visualize the computation graph
 - Currently graph in graph visualization is not available
