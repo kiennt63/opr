@@ -48,16 +48,16 @@ cd opr
 ### Prerequisites
 - Graphviz need to be installed
 ```
-    sudo apt-get install graphviz
+sudo apt-get install graphviz
 ```
 ### Visualization Steps
 - Generate a dot file:
 ```
-    graph->gen_dot("output/graph.dot");
+graph->gen_dot("output/graph.dot");
 ```
 - Generate graph visualization image from the dot file
 ```
-    dot -Tpng output/graph.dot -o output/graph.png
+dot -Tpng output/graph.dot -o output/graph.png
 ```
 <p align="center">
     <img src="images/graph_example.png" alt="Image 1" width="80%"/>
