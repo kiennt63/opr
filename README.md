@@ -9,10 +9,22 @@ A C++ library for efficient vector and matrix operations with multi-backend supp
 
 ## Table of Contents
 
+- [Features](#feature-todo-list)
 - [Installation](#installation)
 - [Examples](#examples)
 - [Visualization](#graph-visualize)
 - [Contact](#contact)
+
+## Features TODO List
+- [x] Vector operators
+- [x] Sub-graph inside graph
+- [x] CUDA + CPU backends support
+- [x] Graph visualization
+- [ ] Matrix operators
+- [ ] OpenGL/OpenCL/Vulkan backends
+- [ ] Examples crafting complex tasks
+- [ ] Visualize all sub-graph inside master graph
+- [ ] Documentation and user guide
 
 ## Installation
 
