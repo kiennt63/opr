@@ -1,29 +1,79 @@
-### opr
+# OPR
 
-##### RUN EXAMPLE
-- Build the project using build script: 
-```
-    ./scripts/build.sh
-```
-- Run the binary using run script (build step included)
-```
-    ./scripts/run_example.sh
+![License](https://img.shields.io/github/license/kiennt63/opr)
+![Issues](https://img.shields.io/github/issues/kiennt63/opr)
+![Forks](https://img.shields.io/github/forks/kiennt63/opr)
+![Stars](https://img.shields.io/github/stars/kiennt63/opr)
+
+A C++ library for efficient vector and matrix operations with multi-backend support, enabling users to create custom computational tasks.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Examples](#examples)
+- [Visualization](#graph-visualize)
+- [Contact](#contact)
+
+## Installation
+
+### Prerequisites
+- C++17 or later
+- CMake version 3.x or later
+- A compatible C++ compiler (e.g., GCC, Clang, MSVC)
+
+### Installation Steps
+
+```bash
+# Clone the repository
+git clone https://github.com/kiennt63/opr.git
+
+# Navigate to the project directory
+cd opr
+
+# Build the project
+./scripts/build.sh
 ```
 
-##### VISUALIZE GRAPH
+## Examples
+- Example code available in `examples` directory
+- Binaries can be found in `build/debug/bin`
+```bash
+# Run cuda example
+./scripts/run_example.sh
+```
+
+## Graph Visualize
+
 - We use graphviz to visualize the computation graph
-- Currently graph in graph visualization is not available
-###### Prequisites
+### Prerequisites
 - Graphviz need to be installed
 ```
     sudo apt-get install graphviz
 ```
-###### Guideline
-- Generate a dot file: using the `gen_dot` api of the graph class
+### Visualization Steps
+- Generate a dot file:
 ```
     graph->gen_dot("output/graph.dot");
 ```
-- Generate graph visualzation image from the dot file
+- Generate graph visualization image from the dot file
 ```
     dot -Tpng output/graph.dot -o output/graph.png
 ```
+<p align="center">
+    <img src="images/graph_example.png" alt="Image 1" width="80%"/>
+</p>
+
+<p align="center">
+    <img src="images/graph.png" alt="Image 2" width="80%"/>
+</p>
+
+## Contact
+
+If you have any questions, suggestions, or issues, feel free to reach out:
+
+- **Kien T. Nguyen**
+- **Email:** [kiennt603@gmail.com](mailto:kiennt603@gmail.com)
+- **LinkedIn:** [Kien T. Nguyen](https://www.linkedin.com/in/neikdev)
+- **GitHub:** [kiennt63](https://github.com/kiennt63)
+
+We appreciate your feedback and contributions to the project!
