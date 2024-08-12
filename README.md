@@ -9,7 +9,7 @@ A C++ library for efficient vector and matrix operations with multi-backend supp
 
 ## Table of Contents
 
-- [Features](#feature-todo-list)
+- [Features](#features-todo-list)
 - [Installation](#installation)
 - [Examples](#examples)
 - [Visualization](#graph-visualize)
