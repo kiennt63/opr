@@ -19,6 +19,7 @@ A C++ library for efficient vector and matrix operations with multi-backend supp
 ### Prerequisites
 - C++17 or later
 - CMake version 3.5 or later
+- Ninja
 - A compatible C++ compiler (e.g., GCC, Clang, MSVC)
 
 ### Installation Steps
