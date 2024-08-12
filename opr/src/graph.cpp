@@ -54,6 +54,7 @@ status graph::gen_dot(const std::string& filename) {
     std::ofstream file(filename.c_str());
 
     file << "digraph G {\n";
+    file << "    dpi=300;\n";
 
     for (const auto& pair : nodes_) {
         auto& node = pair.second;
