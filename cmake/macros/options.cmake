@@ -1,4 +1,4 @@
-find_package(CUDAToolkit)
+find_package(CUDAToolkit QUIET)
 if(CUDAToolkit_FOUND)
     enable_language(CUDA)
 endif()
